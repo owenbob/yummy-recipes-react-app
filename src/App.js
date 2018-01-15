@@ -25,9 +25,9 @@ class App extends Component {
         <div class="center">
           <Paper style={style} zDepth={3} >< Register/>  </Paper>
         </div> 
-        <div class="center">
+        {/* <div class="center">
           <Paper style={style} zDepth={3} >< Login/>  </Paper>
-        </div>
+        </div> */}
           
       </MuiThemeProvider>
       </div>

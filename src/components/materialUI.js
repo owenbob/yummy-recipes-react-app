@@ -10,7 +10,6 @@ import FlatButton from 'material-ui/FlatButton';
 const DefaultUI  = () => (
         <div >
             <AppBar title="Yummy Recipes">
-    
             </AppBar>
         </div>
     

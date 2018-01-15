@@ -24,7 +24,10 @@ class Login extends Component {
                 floatingLabelText="Password"
                 type="password"
                 /><br />
-            <RaisedButton label="Submit" primary={true} style={style} />
+            <RaisedButton label="Login" primary={true} style={style} />
+            <h2 class = "text">Not yet Registed?</h2>
+            <RaisedButton label="Register" primary={true} style={style} />
+
         </div>
 
       </div>
