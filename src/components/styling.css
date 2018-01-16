@@ -1,0 +1,11 @@
+.text {
+    font-family: Roboto, sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+}
+.heading{
+    font-family: Roboto, sans-serif;
+    text-align:left;
+    color:white;
+    font-weight: 400;
+    font-size: 24px;
+}
