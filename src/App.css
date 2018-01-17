@@ -27,9 +27,5 @@
   to { transform: rotate(360deg); }
 }
 
-.center {
-  margin: auto;
-  width: 90%;
-  padding: 10px;
-}
+
 

@@ -2,10 +2,21 @@
     font-family: Roboto, sans-serif;
     color: rgba(0, 0, 0, 0.5);
 }
-.heading{
+.heading {
     font-family: Roboto, sans-serif;
     text-align:left;
     color:white;
     font-weight: 400;
     font-size: 24px;
+}
+.center {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+  }
+
+.inner {
+    margin: auto;
+    width: 40%;
+    padding: 10px;
 }

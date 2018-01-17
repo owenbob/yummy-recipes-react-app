@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import DefaultUI  from './components/materialUI';
+import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
+
+import Header  from './components/header';
 import Register from './components/register';
 import Login from './components/login';
-import Paper from 'material-ui/Paper';
 //import './mystyles.css';
 
 import './App.css';
@@ -19,19 +19,13 @@ const style = {
 class App extends Component {
   render() {
     return (
-      <div class="center">
-      <MuiThemeProvider>
-        <DefaultUI />
-        <div class="center">
-          <Paper style={style} zDepth={3} >< Register/>  </Paper>
-        </div> 
-        {/* <div class="center">
-          <Paper style={style} zDepth={3} >< Login/>  </Paper>
-        </div> */}
-          
-      </MuiThemeProvider>
-      </div>
-      
+      <div>
+        <Header/>
+        <Switch>
+            <Route exact  path='/' component = {Register}/>
+            <Route exact  path='/login' component = {Login}/>
+        </Switch>
+      </div> 
     );
   }
 }

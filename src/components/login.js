@@ -13,7 +13,7 @@ class Login extends Component {
       <div className="Login">
         <div>
             <h1 class = "text">Welcome To Yummy Recipes</h1>
-            
+{/*             
             <TextField
                 hintText="Username"
                 floatingLabelText="Username"
@@ -26,7 +26,7 @@ class Login extends Component {
                 /><br />
             <RaisedButton label="Login" primary={true} style={style} />
             <h2 class = "text">Not yet Registed?</h2>
-            <RaisedButton label="Register" primary={true} style={style} />
+            <RaisedButton label="Register" primary={true} style={style} /> */}
 
         </div>
 

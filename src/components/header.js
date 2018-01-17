@@ -7,7 +7,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 
 
-const DefaultUI  = () => (
+const Header  = () => (
         <div >
             <AppBar title="Yummy Recipes">
             </AppBar>
@@ -16,4 +16,4 @@ const DefaultUI  = () => (
   
 );
  
-export default DefaultUI ;
+export default Header ;
