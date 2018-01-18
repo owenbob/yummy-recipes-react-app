@@ -30,7 +30,7 @@ class Register extends Component {
         })
         .then(response => {
             console.log(response);
-            if (response.data.code === 201){
+            if (response.status === 201){
                 this.props.history.push('/login')   
             }
             }).catch(error=> {
@@ -71,12 +71,12 @@ class Register extends Component {
                             value={this.state.password}
                             onChange ={this.handleChange}
                             /><br />
-                        <RaisedButton className="inner" type="submit"label="Submit" primary={true} style={style}
+                        <RaisedButton  type="submit"label="Submit" primary={true} style={style}
                         />
                     </form>
                     <br/>
                     <h2 class ="text"> Already registered?</h2>
-                    <RaisedButton className="inner"label="Login" href="/login" primary={true} style={style}/>
+                    <RaisedButton label="Login" href="/login" primary={true} style={style}/>
                 </div>
             </Paper>    
         </div>
