@@ -1,6 +1,7 @@
 .text {
     font-family: Roboto, sans-serif;
     color: rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 .heading {
     font-family: Roboto, sans-serif;
@@ -17,6 +18,17 @@
 
 .inner {
     margin: auto;
+    margin-left:30%;
     width: 40%;
     padding: 10px;
+}
+.inner2 {
+    margin: auto;
+    margin-left:10%;
+    width: 40%;
+    padding: 10px;
+}
+
+.menu_style {
+    width: 15%;  
 }
