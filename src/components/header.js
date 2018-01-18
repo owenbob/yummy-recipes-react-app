@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
-import Register from './register';
-
-import FlatButton from 'material-ui/FlatButton';
 
 
 
-const Header  = () => (
+class Header extends Component { 
+    render() {
+        return (
         <div >
             <AppBar title="Yummy Recipes">
             </AppBar>
@@ -15,5 +13,7 @@ const Header  = () => (
     
   
 );
+}
+}
  
 export default Header ;
