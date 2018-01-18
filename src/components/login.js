@@ -1,35 +1,73 @@
-import React, { Component } from 'react';
+import React, { Component }  from 'react';
+import axios from 'axios';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
 import './styling.css';
+import style from './styling';
 
-const style = {
-    margin: 12,
-  };
 
 class Login extends Component { 
-  render() {
+  constructor(props){
+    super(props);
+    this.state={
+      username:'',
+      password:''
+    };
+    this.handleLoginChange = this.handleLoginChange.bind(this);
+    // this.isAuthenticated = this.isAuthenticated.bind(this);
+  } 
+
+  handleLoginClick = (e) =>{
+    e.preventDefault();
+    const LoginUrl='http://127.0.0.1:5000/login';
+    axios.post(LoginUrl, {
+        username: this.state.username,
+        password: this.state.password
+    })
+    .then(response => {
+        console.log(response);
+        if (response.data.token){
+            localStorage.setItem("token",response.data.token);
+            this.props.history.push('/yummyrecipes/dashboard');
+        }
+        }).catch(error => {
+            console.log(error)
+        });
+    }
+  handleLoginChange=(e) => {
+    this.setState({ [e.target.name] : e.target.value });
+  }
+  render() { 
     return (
       <div className="Login">
-        <div>
-            <h1 class = "text">Welcome To Yummy Recipes</h1>
-{/*             
-            <TextField
-                hintText="Username"
-                floatingLabelText="Username"
-                type="username"
-                /><br />
-            <TextField
-                hintText="Password Field"
-                floatingLabelText="Password"
-                type="password"
-                /><br />
-            <RaisedButton label="Login" primary={true} style={style} />
-            <h2 class = "text">Not yet Registed?</h2>
-            <RaisedButton label="Register" primary={true} style={style} /> */}
-
+        <div class = "center">
+          <Paper style={style} zDepth={3} >
+            <div class="inner">
+                    <h1 class = "text">Welcome To Yummy Recipes</h1>
+                <form onSubmit={this.handleLoginClick}>
+                <TextField
+                    hintText=" Enter your Username"
+                    floatingLabelText="Username"
+                    name="username"
+                    value={this.state.username}
+                    onChange = {this.handleLoginChange}
+                    /><br />
+                <TextField
+                    hintText=" Enter your Password"
+                    floatingLabelText="Password"
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange = {this.handleLoginChange}
+                    /><br />
+                <RaisedButton type ="submit" label ="Login" primary={true} style={style} />
+                    <h2 class = "text">Not yet Registed?</h2>
+                <RaisedButton label="Register" href="/" primary={true} style={style} /> 
+                </form>
+            </div>
+          </Paper>
         </div>
-
       </div>
     );
   }
