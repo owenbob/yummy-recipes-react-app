@@ -44,10 +44,10 @@ class Register extends Component {
   render() {
     return (    
     <div className="Register" >
-        <div class="center">
+        <div className ="center">
             <Paper style={style} zDepth={3} >
-                <div class="inner">
-                    <h1 class = "text" >Welcome To Yummy Recipes</h1>
+                <div className ="inner">
+                    <h1 className = "text" >Welcome To Yummy Recipes</h1>
                     <form   onSubmit={this.handleClick}>
                         <TextField
                             hintText="Enter your username"

@@ -14,8 +14,6 @@ class Login extends Component {
       username:'',
       password:''
     };
-    this.handleLoginChange = this.handleLoginChange.bind(this);
-    // this.isAuthenticated = this.isAuthenticated.bind(this);
   } 
 
   handleLoginClick = (e) =>{
@@ -41,10 +39,10 @@ class Login extends Component {
   render() { 
     return (
       <div className="Login">
-        <div class = "center">
+        <div className = "center">
           <Paper style={style} zDepth={3} >
-            <div class="inner">
-                    <h1 class = "text">Welcome To Yummy Recipes</h1>
+            <div className = "inner">
+                    <h1 className = "text">Welcome To Yummy Recipes</h1>
                 <form onSubmit={this.handleLoginClick}>
                 <TextField
                     hintText=" Enter your Username"
@@ -62,7 +60,7 @@ class Login extends Component {
                     onChange = {this.handleLoginChange}
                     /><br />
                 <RaisedButton type ="submit" label ="Login" primary={true} style={style} />
-                    <h2 class = "text">Not yet Registed?</h2>
+                    <h2 className = "text">Not yet Registed?</h2>
                 <RaisedButton label="Register" href="/" primary={true} style={style} /> 
                 </form>
             </div>

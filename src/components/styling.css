@@ -30,5 +30,19 @@
 }
 
 .menu_style {
-    width: 15%;  
+    width: 100%;  
+}
+
+
+.container{
+    width:95%;
+}
+.left{
+    float:left;
+    width:10%;
+}
+.right{
+    display: inline-block;
+    width:80%;
+    padding-left: 2cm;
 }
