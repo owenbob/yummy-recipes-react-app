@@ -26,3 +26,8 @@ const style3 = {
   },
 };
 
+const style4 = {
+  marginRight: 20,
+};
+
+

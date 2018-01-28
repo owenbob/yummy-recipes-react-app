@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Register from './register';
+import CreateCategory from './createCategory';
+import ViewCategory from './viewCategory';
 import style2 from './styling';
 import style3 from './styling';
 
 import './styling.css';
 
 import FlatButton from 'material-ui/FlatButton';
-
 
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -83,8 +84,12 @@ class Dashboard extends Component {
         <Tabs onChange={this.handleChange}>
         <Tab label="Category" value="a">
           <div>
-            
-            
+              <CreateCategory />
+          </div>
+          <br/>
+          <br/>
+          <div>
+          <ViewCategory/>
           </div>
         </Tab>
         <Tab leftIcon={<LibraryBooks />} label="Recipe" value="b">
@@ -100,7 +105,6 @@ class Dashboard extends Component {
         )
     }
 }
- 
 export default Dashboard ;
 
 
