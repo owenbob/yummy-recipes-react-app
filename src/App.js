@@ -5,6 +5,9 @@ import Header  from './components/header';
 import Register from './components/register';
 import Login from './components/login';
 import Dashboard from './components/dashboard';
+import DashboardRecipes from './components/dashboardRecipes';
+import CategoryDisplay from './components/categoryDisplay';
+import RecipeDisplay from'./components/recipeDisplay';
 //import './mystyles.css';
 
 import './App.css';
@@ -20,6 +23,9 @@ class App extends Component {
             <Route exact  path='/' component = {Register}/>
             <Route path='/login' component = {Login}/>
             <Route path='/yummyrecipes/dashboard' component = {Dashboard}/>
+            <Route path='/yummyrecipes/recipes'component = {DashboardRecipes}/>
+            <Route path ='/yummyrecipes/category/:id' component ={CategoryDisplay}/>
+            <Route path ='/yummyrecipes/recipe/:id' component ={RecipeDisplay}/>
         </Switch>
       </div> 
     );

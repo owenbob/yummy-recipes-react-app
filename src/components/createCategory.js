@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 
 import axios from 'axios';
 import './styling.css';
 
-import style5 from './styling';
-import style4 from './styling';
-import style from './styling';
 
 
 
@@ -75,7 +73,9 @@ class CreateCategory extends Component {
     return ( 
         <div>
         <div className = "addbutton">
-            <RaisedButton label=" Create Category" onClick={this.handleOpen} />
+            <FloatingActionButton onClick={this.handleOpen}>
+                <ContentAdd />
+            </FloatingActionButton>
             <Dialog
             title="Please Enter Category details"
             actions={actions}
@@ -87,7 +87,6 @@ class CreateCategory extends Component {
                     <TextField
                         floatingLabelText="Enter category title"
                         errorText="This field is required."
-                        underlineFocusStyle={style5.underlineStyle}
                         name="category_title"
                         value={this.state.category_title}
                         onChange = {this.handleChange}
@@ -95,7 +94,6 @@ class CreateCategory extends Component {
                     <TextField
                         floatingLabelText="Enter category description"
                         errorText="This field is required."
-                        underlineFocusStyle={style5.underlineStyle}
                         name="category_description"
                         value={this.state.category_description}
                         onChange = {this.handleChange}

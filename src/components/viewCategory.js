@@ -5,16 +5,23 @@ import axios from 'axios';
 import {
     Table,
     TableBody,
-    TableHeader,
-    TableHeaderColumn,
     TableRow,
     TableRowColumn,
   } from 'material-ui/Table';
+
 const Categories=props=>{
 return(
     <TableRow>
-        <TableRowColumn>{props.category_title}</TableRowColumn>
-        <TableRowColumn>{props.category_description}</TableRowColumn>
+        <TableRowColumn>
+        <h3>
+        <a href={"category/"+props.category_id}>{props.category_title}</a>
+         </h3>
+        </TableRowColumn>
+        <TableRowColumn>
+        <h3>
+        {props.category_description}
+        </h3>
+        </TableRowColumn>
         <TableRowColumn>
             <EditCategory 
             id={props.category_id} 
@@ -22,9 +29,10 @@ return(
             category_description={props.category_description}
             />
         </TableRowColumn>
-        <TableRowColumn>
+            <TableRowColumn>
         <DeleteCategory id={props.category_id}/>
         </TableRowColumn>
+
     </TableRow>
 )}
 
@@ -36,7 +44,7 @@ return(
           
         }
       }
-
+    
     getCategories(){
         let viewCategoryUrl= 'http://127.0.0.1:5000/categories'
 
@@ -57,20 +65,12 @@ return(
       }
 
     render() {  
-        return(
+        return( 
                 <Table>
-                    <TableHeader>
-                    <TableRow>
-                        
-                        <TableHeaderColumn>CATEGORY TITLE</TableHeaderColumn>
-                        <TableHeaderColumn>CATEGORY DESCRIPTION</TableHeaderColumn>
-                        <TableHeaderColumn>EDIT</TableHeaderColumn>
-                        <TableHeaderColumn>DELETE</TableHeaderColumn>
-                    </TableRow>
-                    </TableHeader>
+                    
                     <TableBody>
                         {this.state.categories.map(category =>
-                        <Categories key={category.category_id} {...category}/>
+                        <Categories key={category.category_id} {...category} history={this.props}/>
 
                         )}
                     </TableBody>

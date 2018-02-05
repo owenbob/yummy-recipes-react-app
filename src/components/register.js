@@ -75,7 +75,7 @@ class Register extends Component {
                         />
                     </form>
                     <br/>
-                    <h2 class ="text"> Already registered?</h2>
+                    <h2 className ="text"> Already registered?</h2>
                     <RaisedButton label="Login" href="/login" primary={true} style={style}/>
                 </div>
             </Paper>    
