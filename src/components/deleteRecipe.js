@@ -11,6 +11,7 @@ import './styling.css';
 
 
 
+
 class DeleteCategory  extends Component {
     constructor(props){
         super(props);
@@ -21,7 +22,7 @@ class DeleteCategory  extends Component {
 
       handleClick = (e) =>{
         e.preventDefault();
-        const DeleteCategoryUrl='http://127.0.0.1:5000/delete_category/'+this.props.id;
+        const DeleteCategoryUrl='http://127.0.0.1:5000/delete_recipe/'+this.props.id;
         axios.delete(DeleteCategoryUrl,
         {headers: {'x-access-token': localStorage.getItem('token')}} 
     )
@@ -72,7 +73,7 @@ class DeleteCategory  extends Component {
             onRequestClose={this.handleClose}
             >
                 <form   onSubmit={this.handleClick}>
-                 <h3> Are you sure you want to delete this category?</h3>    
+                 <h3> Are you sure you want to delete this Recipe?</h3>    
                 </form>
             </Dialog>
         </div>    

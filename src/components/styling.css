@@ -49,3 +49,20 @@
 .addbutton{
     margin :30px;
 }
+.select {
+    font: inherit;
+    width:250px; 
+    height:30px;
+    overflow:hidden;
+    background-color:transparent;
+    border: 1;
+}
+.diva{
+    width:250px;
+}
+.text2{
+    font-family: Roboto, sans-serif;
+    color:rgb(178, 178, 178);
+}
+
+

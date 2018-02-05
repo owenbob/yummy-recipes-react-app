@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CreateCategory from './createCategory';
-import ViewCategory from './viewCategory';
+import CreateRecipe from './createRecipe';
+import ViewRecipes from './viewRecipes';
 
 import './styling.css';
 
@@ -9,17 +9,24 @@ import MenuItem from 'material-ui/MenuItem';
 import Reorder from 'material-ui/svg-icons/action/reorder';
 import LibraryBooks  from 'material-ui/svg-icons/av/library-books';
 import {Tabs, Tab} from 'material-ui/Tabs';
+
 import Divider from 'material-ui/Divider';
 import Reply from 'material-ui/svg-icons/content/reply';
 
 
-class Dashboard extends Component {
-
+class DashboardRecipes extends Component {
+    // constructor(props){
+    //     super(props);
+    // }
     componentDidMount(){
         if(!localStorage.getItem('token')){
             this.props.history.push('/login')
         }
     }
+    handleLogOut =(e) =>{
+        localStorage.removeItem("token");
+        this.props.history.push('/login') 
+    };
     handleChangeCat=(e) =>{
         this.props.history.push('/yummyrecipes/dashboard')
         
@@ -27,29 +34,26 @@ class Dashboard extends Component {
     handleChangeRec=(e) =>{
         this.props.history.push('/yummyrecipes/recipes')
         }
-
-    handleLogOut =(e) =>{
-        localStorage.removeItem("token");
-        this.props.history.push('/login')
-    }
-    
     render() {
         return (
         <div>
             <div className = "center">
-                <h1 className = "text">Welcome To Yummy Recipes</h1>          
+                <h1 className = "text">Welcome to Recipes</h1>
+               
             </div>
         <div id = "container">
         <div className = "left">
         <Menu >
             <MenuItem   className = "menu_style"
                         onClick = {this.handleChangeCat}  
-                        primaryText="Category"  
+                        primaryText="Category" 
+                        value="a" 
                         leftIcon={<Reorder />} 
             />
             <MenuItem   className = "menu_style"
                         onClick = {this.handleChangeRec} 
                         primaryText="Recipe" 
+                        value="b"
                         leftIcon={<LibraryBooks />} 
             />
             <Divider    className = "menu_style" 
@@ -65,16 +69,15 @@ class Dashboard extends Component {
         </div>
 
         <div className = "right">
-        <Tabs>
-        <Tab label="Category">
+        <Tabs onChange={this.handleChange}>
+    
+        <Tab leftIcon={<LibraryBooks />} label="Recipes" value="b">
+        <CreateRecipe/>
           <div>
-              <CreateCategory />
+          <Divider />
           </div>
-          <br/>
-          <br/>
-          <Divider/>
           <div>
-          <ViewCategory/>
+          <ViewRecipes />
           </div>
         </Tab>
       </Tabs> 
@@ -84,7 +87,7 @@ class Dashboard extends Component {
         )
     }
 }
-export default Dashboard ;
+export default DashboardRecipes ;
 
 
 
