@@ -88,14 +88,12 @@ class CreateCategory extends Component {
                         floatingLabelText="Enter category title"
                         errorText="This field is required."
                         name="category_title"
-                        value={this.state.category_title}
                         onChange = {this.handleChange}
                         /><br />
                     <TextField
                         floatingLabelText="Enter category description"
                         errorText="This field is required."
                         name="category_description"
-                        value={this.state.category_description}
                         onChange = {this.handleChange}
                         />
                 </form>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import EditCategory from './editCategory';
 import DeleteCategory from './deleteCategory';
+import Categories from './Category';
 import axios from 'axios';
+import TextField from 'material-ui/TextField';
 import {
     Table,
     TableBody,
@@ -9,32 +11,7 @@ import {
     TableRowColumn,
   } from 'material-ui/Table';
 
-const Categories=props=>{
-return(
-    <TableRow>
-        <TableRowColumn>
-        <h3>
-        <a href={"category/"+props.category_id}>{props.category_title}</a>
-         </h3>
-        </TableRowColumn>
-        <TableRowColumn>
-        <h3>
-        {props.category_description}
-        </h3>
-        </TableRowColumn>
-        <TableRowColumn>
-            <EditCategory 
-            id={props.category_id} 
-            category_title={props.category_title} 
-            category_description={props.category_description}
-            />
-        </TableRowColumn>
-            <TableRowColumn>
-        <DeleteCategory id={props.category_id}/>
-        </TableRowColumn>
 
-    </TableRow>
-)}
 
   class ViewCategory extends Component {
     constructor(props){
@@ -63,16 +40,46 @@ return(
     componentWillMount(){
         this.getCategories();   
       }
+    handleSearchCat=(e)=>{
+        if (e.target.value) {
+            let SearchCatUrl = 'http://127.0.0.1:5000/categories?q=' + e.target.value
 
-    render() {  
+            axios.get(SearchCatUrl,
+                {headers: {'x-access-token': localStorage.getItem('token')}} 
+            ).then(response => {
+                this.categories=response.data.Categories
+                let categories= this.state.categories
+                categories = this.categories
+                this.setState({categories})
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        } this.getCategories();
+
+    }
+
+    render() {
+        
+        let renderCategories = this.state.categories.map(category => {
+            return (
+            <Categories id={category.id} {...category}/>
+        )
+    })
         return( 
                 <Table>
                     
                     <TableBody>
-                        {this.state.categories.map(category =>
-                        <Categories key={category.category_id} {...category} history={this.props}/>
-
-                        )}
+                        <TableRow>
+                            <div className = "right1">
+                                    <TextField
+                                    hintText = "Search Categories"
+                                    name = "q"
+                                    onChange = {this.handleSearchCat}
+                                    />
+                            </div>
+                    </TableRow>
+                            {renderCategories}
                     </TableBody>
                 </Table>
         )

@@ -36,6 +36,7 @@
 
 .container{
     width:95%;
+    border: 3px solid #73AD21;
 }
 .left{
     float:left;
@@ -46,6 +47,14 @@
     width:80%;
     padding-left: 2cm;
 }
+.right1{
+    display: inline-block;
+    padding-left: 2cm;
+    float:right;
+
+    
+}
+
 .addbutton{
     margin :30px;
 }

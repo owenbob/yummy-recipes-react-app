@@ -3,21 +3,23 @@ import CreateRecipe from './createRecipe';
 import ViewRecipes from './viewRecipes';
 
 import './styling.css';
+import axios from 'axios';
 
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import Reorder from 'material-ui/svg-icons/action/reorder';
 import LibraryBooks  from 'material-ui/svg-icons/av/library-books';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import TextField from 'material-ui/TextField';
 
 import Divider from 'material-ui/Divider';
 import Reply from 'material-ui/svg-icons/content/reply';
 
 
 class DashboardRecipes extends Component {
-    // constructor(props){
-    //     super(props);
-    // }
+    constructor(props){
+        super(props);
+    }
     componentDidMount(){
         if(!localStorage.getItem('token')){
             this.props.history.push('/login')
@@ -34,11 +36,13 @@ class DashboardRecipes extends Component {
     handleChangeRec=(e) =>{
         this.props.history.push('/yummyrecipes/recipes')
         }
+    
     render() {
         return (
         <div>
             <div className = "center">
                 <h1 className = "text">Welcome to Recipes</h1>
+                <Divider/>         
                
             </div>
         <div id = "container">
@@ -77,7 +81,7 @@ class DashboardRecipes extends Component {
           <Divider />
           </div>
           <div>
-          <ViewRecipes />
+          <ViewRecipes   />
           </div>
         </Tab>
       </Tabs> 

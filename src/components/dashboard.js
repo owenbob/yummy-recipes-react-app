@@ -3,6 +3,7 @@ import CreateCategory from './createCategory';
 import ViewCategory from './viewCategory';
 
 import './styling.css';
+import axios from 'axios';
 
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -13,7 +14,13 @@ import Divider from 'material-ui/Divider';
 import Reply from 'material-ui/svg-icons/content/reply';
 
 
+
 class Dashboard extends Component {
+    constructor (props){
+        super(props)
+        
+    }
+
 
     componentDidMount(){
         if(!localStorage.getItem('token')){
@@ -32,13 +39,16 @@ class Dashboard extends Component {
         localStorage.removeItem("token");
         this.props.history.push('/login')
     }
+   
     
     render() {
         return (
         <div>
             <div className = "center">
-                <h1 className = "text">Welcome To Yummy Recipes</h1>          
+                <h1 className = "text">Welcome To Yummy Recipes</h1>
+                <Divider/>      
             </div>
+            
         <div id = "container">
         <div className = "left">
         <Menu >
@@ -68,14 +78,13 @@ class Dashboard extends Component {
         <Tabs>
         <Tab label="Category">
           <div>
-              <CreateCategory />
+                <CreateCategory />
           </div>
-          <br/>
-          <br/>
-          <Divider/>
-          <div>
-          <ViewCategory/>
-          </div>
+            <br/>
+                <Divider/>
+            <div>
+                <ViewCategory/>
+            </div>
         </Tab>
       </Tabs> 
         </div>

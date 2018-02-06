@@ -6,6 +6,8 @@ import axios from 'axios';
 import './styling.css';
 import style from './styling';
 
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 
@@ -31,7 +33,8 @@ class Register extends Component {
         .then(response => {
             console.log(response);
             if (response.status === 201){
-                this.props.history.push('/login')   
+                this.props.history.push('/login')
+                toast("You have succefully registered")   
             }
             }).catch(error=> {
                 console.log(error)
