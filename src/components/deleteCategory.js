@@ -3,6 +3,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Delete from 'material-ui/svg-icons/action/delete';
+import {notify} from 'react-notify-toast';
 
 
 import axios from 'axios';
@@ -28,11 +29,12 @@ class DeleteCategory  extends Component {
         .then(response => {
             console.log(response);
             if(response.status === 200){
+                notify.show('Category deleted','success');
                 window.location.reload()
                 this.props.history.push('/yummyrecipes/dashboard');
             }
             }).catch(error=> {
-                console.log(error)
+                notify.show('Category Not created','error');
             });
         } 
     

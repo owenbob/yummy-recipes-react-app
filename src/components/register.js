@@ -5,8 +5,8 @@ import Paper from 'material-ui/Paper';
 import axios from 'axios';
 import './styling.css';
 import style from './styling';
+import Notifications, {notify} from 'react-notify-toast';
 
-import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -33,11 +33,13 @@ class Register extends Component {
         .then(response => {
             console.log(response);
             if (response.status === 201){
+                notify.show('You have been registered!','success');
                 this.props.history.push('/login')
-                toast("You have succefully registered")   
+                
+                  
             }
             }).catch(error=> {
-                console.log(error)
+                notify.show('Your Registration was unsuccessful!','error');
             });
         }
 
@@ -51,6 +53,7 @@ class Register extends Component {
             <Paper style={style} zDepth={3} >
                 <div className ="inner">
                     <h1 className = "text" >Welcome To Yummy Recipes</h1>
+                    <Notifications />
                     <form   onSubmit={this.handleClick}>
                         <TextField
                             hintText="Enter your username"

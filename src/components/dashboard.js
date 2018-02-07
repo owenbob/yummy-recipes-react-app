@@ -12,6 +12,7 @@ import LibraryBooks  from 'material-ui/svg-icons/av/library-books';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Divider from 'material-ui/Divider';
 import Reply from 'material-ui/svg-icons/content/reply';
+import  {notify} from 'react-notify-toast';
 
 
 
@@ -38,6 +39,7 @@ class Dashboard extends Component {
     handleLogOut =(e) =>{
         localStorage.removeItem("token");
         this.props.history.push('/login')
+        notify.show('Successful Logged out', 'success');
     }
    
     
@@ -46,7 +48,7 @@ class Dashboard extends Component {
         <div>
             <div className = "center">
                 <h1 className = "text">Welcome To Yummy Recipes</h1>
-                <Divider/>      
+                <Divider/>    
             </div>
             
         <div id = "container">

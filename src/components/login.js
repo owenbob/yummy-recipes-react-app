@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import './styling.css';
 import style from './styling';
+import {notify} from 'react-notify-toast';
 
 
 class Login extends Component { 
@@ -24,13 +25,14 @@ class Login extends Component {
         password: this.state.password
     })
     .then(response => {
-        console.log(response);
         if (response.data.token){
             localStorage.setItem("token",response.data.token);
+            notify.show('You have logged in!','success');
             this.props.history.push('/yummyrecipes/dashboard');
         }
         }).catch(error => {
-            console.log(error)
+          notify.show('Unsuccessful Login', 'error');
+         
         });
     }
   handleLoginChange=(e) => {

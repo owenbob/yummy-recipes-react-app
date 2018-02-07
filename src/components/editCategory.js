@@ -4,6 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import BorderColor from 'material-ui/svg-icons/editor/border-color';
+import  {notify} from 'react-notify-toast';
 
 
 
@@ -37,11 +38,12 @@ class EditCategory extends Component {
     )
         .then(response => {
             if(response.status === 201){
+                notify.show('Category  Edited','success');
                 window.location.reload()
                 this.props.history.push('/yummyrecipes/dashboard');
             }
             }).catch(error=> {
-                console.log(error)
+                notify.show('Category Not edited','error');
             });
         } 
     

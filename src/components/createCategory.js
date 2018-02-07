@@ -4,6 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import  {notify} from 'react-notify-toast';
 
 
 import axios from 'axios';
@@ -36,18 +37,17 @@ class CreateCategory extends Component {
         .then(response => {
             console.log(response);
             if(response.status === 201){
+                notify.show('Category created!','success');
                 window.location.reload()
-                this.props.history.push('/yummyrecipes/dashboard');
+                this.props.history.push('/yummyrecipes/dashboard');   
             }
             }).catch(error=> {
-                console.log(error)
+                notify.show('Category Not created','error');
             });
         } 
-    
       handleOpen = () => {
         this.setState({open: true});
       };
-    
       handleClose = () => {
         this.setState({open: false});
       };

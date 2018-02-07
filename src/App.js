@@ -8,6 +8,7 @@ import Dashboard from './components/dashboard';
 import DashboardRecipes from './components/dashboardRecipes';
 import CategoryDisplay from './components/categoryDisplay';
 import RecipeDisplay from'./components/recipeDisplay';
+import Notifications from 'react-notify-toast';
 //import './mystyles.css';
 
 import './App.css';
@@ -19,6 +20,7 @@ class App extends Component {
     return (
       <div>
         <Header/>
+        <Notifications options={{zIndex: 5000}} />
         <Switch>
             <Route exact  path='/' component = {Register}/>
             <Route path='/login' component = {Login}/>

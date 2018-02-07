@@ -11,6 +11,8 @@ import {
     TableRowColumn,
   } from 'material-ui/Table';
 
+import {notify} from 'react-notify-toast';
+
 
 
   class ViewCategory extends Component {
@@ -33,7 +35,7 @@ import {
           this.setState({categories:response.data.Categories})
         })
         .catch(error => {
-          console.log(error)
+            notify.show('Unable to display your Categories','error');
         })
 
     }
@@ -71,6 +73,11 @@ import {
                     
                     <TableBody>
                         <TableRow>
+                        <TableRowColumn>
+                        </TableRowColumn>
+                        <TableRowColumn>
+                        </TableRowColumn>
+                        <TableRowColumn>
                             <div className = "right1">
                                     <TextField
                                     hintText = "Search Categories"
@@ -78,6 +85,7 @@ import {
                                     onChange = {this.handleSearchCat}
                                     />
                             </div>
+                        </TableRowColumn>
                     </TableRow>
                             {renderCategories}
                     </TableBody>
