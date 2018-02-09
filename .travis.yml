@@ -16,4 +16,5 @@ install:
 script:
   - npm test -- --coverage
  
-after_script: 'coveralls'
+after_success: 
+- coveralls
