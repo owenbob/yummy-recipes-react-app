@@ -2,8 +2,8 @@ import React, { Component }  from 'react';
 import axios from 'axios';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
-// import './styling.css';
+import Card from 'material-ui/Card';
+
 import style from './styling';
 import {notify} from 'react-notify-toast';
 import baseUrl from'./config';
@@ -45,7 +45,7 @@ class Login extends Component {
     return (
       <div className="Login">
         <div className = "center">
-          <Paper style={style} zDepth={3} >
+          <Card>
             <div className = "inner">
                     <h1 className = "text">Welcome To Yummy Recipes</h1>
                 <form onSubmit={this.handleLoginClick}>
@@ -69,7 +69,7 @@ class Login extends Component {
                 <RaisedButton label="Register" href="/" primary={true} style={style} /> 
                 </form>
             </div>
-          </Paper>
+          </Card>
         </div>
       </div>
     );
