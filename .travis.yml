@@ -13,4 +13,7 @@ install:
   - npm install
 # command to run tests
 script:
-    - npm test 
+  - npm test
+ 
+after_success:
+  - coveralls
