@@ -1,31 +1,80 @@
-.App {
+.text {
+  font-family: Roboto, sans-serif;
+  color: rgba(0, 0, 0, 0.5);
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.heading {
+  font-family: Roboto, sans-serif;
+  text-align:left;
+  color:white;
+  font-weight: 400;
+  font-size: 24px;
+}
+.center {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.inner {
+  margin: auto;
+  margin-left:30%;
+  width: 40%;
+  padding: 10px;
+}
+.inner2 {
+  margin: auto;
+  margin-left:10%;
+  width: 40%;
+  padding: 10px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.menu_style {
+  width: 100%;  
 }
 
-.App-intro {
-  font-size: large;
+
+.container{
+  width:95%;
+  border: 3px solid #73AD21;
+}
+.left{
+  float:left;
+  width:10%;
+}
+.right{
+  display: inline-block;
+  width:80%;
+  padding-left: 2cm;
+}
+.right1{
+  display: inline-block;
+  padding-left: 2cm;
+  float:right;
+
+  
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.addbutton{
+  margin :30px;
 }
+.select {
+  font: inherit;
+  width:250px; 
+  height:30px;
+  overflow:hidden;
+  background-color:transparent;
+  border: 1;
+}
+.diva{
+  width:250px;
+}
+.text2{
+  font-family: Roboto, sans-serif;
+  color:rgb(178, 178, 178);
+}
+
+
 
 
 

@@ -5,11 +5,12 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import baseUrl from './config';
 
 
 
 import axios from 'axios';
-import './styling.css';
+
 
 import style5 from './styling';
 
@@ -31,9 +32,14 @@ class CreateRecipe extends Component {
           recipe_description:'',
           categories:[]
         };
+        this.handleClick =this.handleClick.bind(this);
+        this.handleOpen =this.handleOpen.bind(this);
+        this.handleClose =this.handleClose.bind(this);
+        this.handleChange =this.handleChange.bind(this);
+        this.handleSelectChange=this.handleSelectChange.bind(this);
       } 
       componentDidMount(){
-        let viewCategoryUrl= 'http://127.0.0.1:5000/categories'
+        let viewCategoryUrl= baseUrl+'categories'
 
         axios.get(viewCategoryUrl,
             {headers: {'x-access-token': localStorage.getItem('token')}} 
@@ -47,9 +53,9 @@ class CreateRecipe extends Component {
 
       }
 
-      handleClick = (e) =>{
+      handleClick(e){
         e.preventDefault();
-        const CreateRecipeUrl='http://127.0.0.1:5000/create_recipe/' +this.state.category_id;
+        const CreateRecipeUrl = baseUrl+'create_recipe/' +this.state.category_id;
         axios.post(CreateRecipeUrl,
             {
             recipe_title: this.state.recipe_title,
@@ -68,21 +74,20 @@ class CreateRecipe extends Component {
             });
         } 
     
-      handleOpen = () => {
+      handleOpen(){
         this.setState({open: true});
       };
     
-      handleClose = () => {
+      handleClose(){
         this.setState({open: false});
       };
-      handleChange=(e)=>{
+      handleChange(e){
         this.setState({ [e.target.name] : e.target.value });
-    }
-     handleSelectChange = (event) => {
+     }
+     handleSelectChange(e){
          this.setState({
-             category_id:event.target.value
+             category_id:e.target.value
             });
-        console.log('here--'+this.state.category_id)
      }
   render() {
     const actions = [
@@ -119,7 +124,7 @@ class CreateRecipe extends Component {
                         name="category_id"
                         onChange={this.handleSelectChange}
                         >
-                        <option className="text2" disabled>Select Category</option>,
+                        <option className="text2" disabled>You cannot create Recipe without category</option>,
                         {this.state.categories.map(category =>
                              <Options key={category.category_id} {...category}/> 
                         )}

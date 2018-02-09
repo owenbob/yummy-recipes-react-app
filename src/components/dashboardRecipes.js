@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CreateRecipe from './createRecipe';
 import ViewRecipes from './viewRecipes';
 
-import './styling.css';
+
 import axios from 'axios';
 
 import Menu from 'material-ui/Menu';
@@ -19,21 +19,24 @@ import Reply from 'material-ui/svg-icons/content/reply';
 class DashboardRecipes extends Component {
     constructor(props){
         super(props);
+        this.handleLogOut = this.handleLogOut.bind(this);
+        this.handleChangeCat = this.handleChangeCat.bind(this);
+        this.handleChangeRec = this.handleChangeRec.bind(this);
     }
     componentDidMount(){
         if(!localStorage.getItem('token')){
             this.props.history.push('/login')
         }
     }
-    handleLogOut =(e) =>{
+    handleLogOut (e){
         localStorage.removeItem("token");
         this.props.history.push('/login') 
     };
-    handleChangeCat=(e) =>{
+    handleChangeCat(e){
         this.props.history.push('/yummyrecipes/dashboard')
         
     }
-    handleChangeRec=(e) =>{
+    handleChangeRec(e){
         this.props.history.push('/yummyrecipes/recipes')
         }
     

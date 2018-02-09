@@ -7,7 +7,7 @@ import BorderColor from 'material-ui/svg-icons/editor/border-color';
 
 
 import axios from 'axios';
-import './styling.css';
+
 
 
 
@@ -22,10 +22,15 @@ class EditRecipes extends Component {
           recipe_title:this.props.recipe_title,
           recipe_description:this.props.recipe_description
         };
+        this.handleClick =this.handleClick.bind(this);
+        this.handleOpen =this.handleOpen.bind(this);
+        this.handleClose =this.handleClose.bind(this);
+        this.handleChange =this.handleChange.bind(this);
+        
        
       } 
 
-      handleClick = (e) =>{
+      handleClick(e){
         e.preventDefault();
         const EditrecipeUrl='http://127.0.0.1:5000/edit_recipe/'+this.props.id;
         axios.put(EditrecipeUrl,
@@ -45,15 +50,15 @@ class EditRecipes extends Component {
             });
         } 
     
-      handleOpen = () => {
+      handleOpen(){
         this.setState({open: true});
         console.log(this.props.id)
       };
     
-      handleClose = () => {
+      handleClose(){
         this.setState({open: false});
       };
-      handleChange=(e)=>{
+      handleChange(e){
         this.setState({ [e.target.name] : e.target.value });
     }
 

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header matches  snapshot 1`] = `
+<div>
+  <AppBar
+    showMenuIconButton={true}
+    title="Yummy Recipes"
+    zDepth={1}
+  />
+</div>
+`;

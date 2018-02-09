@@ -4,10 +4,13 @@ import {
     Table,
     TableBody,
     TableRow,
+    TableRowColumn
   } from 'material-ui/Table';
 import Recipe from './Recipe'
 import TextField from 'material-ui/TextField';
-import './styling.css';
+import Card from 'material-ui/Card';
+import baseUrl from './config';
+
 
 
 
@@ -18,13 +21,14 @@ import './styling.css';
           recipes:[],
           
         }
+        this.handleSearchRec = this.handleSearchRec.bind(this);
       }
     componentWillReceiveProps(props){
         console.log('now',props)
        
     }
     getRecipes(){
-        let viewRecipesUrl= 'http://127.0.0.1:5000/recipes';
+        let viewRecipesUrl= baseUrl+'recipes';
 
         axios.get(viewRecipesUrl,
             {headers: {'x-access-token': localStorage.getItem('token')}} 
@@ -41,7 +45,7 @@ import './styling.css';
         this.getRecipes();   
       }
 
-    handleSearchRec=(e)=>{
+    handleSearchRec(e){
         if (e.target.value) {
             let SearchRecUrl = 'http://127.0.0.1:5000/recipes?q=' + e.target.value
 
@@ -71,10 +75,16 @@ import './styling.css';
         )
         })
         return( 
+            <Card>
                 <Table>
                     <TableBody>
                     <TableRow>
-                   
+                    <TableRowColumn>
+                    </TableRowColumn>
+                    <TableRowColumn>
+                    </TableRowColumn>
+                    <TableRowColumn>
+                    </TableRowColumn>
                     <div className = "right1">
                     <TextField
                     hintText = "Search Recipes"
@@ -88,6 +98,7 @@ import './styling.css';
                         {renderRecipes}
                     </TableBody>
                 </Table>
+            </Card>
         )
     }
 }

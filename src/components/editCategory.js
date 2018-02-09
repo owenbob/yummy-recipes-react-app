@@ -9,7 +9,7 @@ import  {notify} from 'react-notify-toast';
 
 
 import axios from 'axios';
-import './styling.css';
+// import './styling.css';
 
 
 
@@ -23,10 +23,13 @@ class EditCategory extends Component {
           category_title:this.props.category_title,
           category_description:this.props.category_description
         };
-       
-      } 
+        this.handleClick= this.handleClick.bind(this);
+        this.handleOpen = this.handleOpen.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+        this.handleChange = this.handleChange.bind(this); 
+     } 
 
-      handleClick = (e) =>{
+      handleClick(e){
         e.preventDefault();
         const EditCategoryUrl='http://127.0.0.1:5000/edit_category/'+this.props.id;
         axios.put(EditCategoryUrl,
@@ -47,15 +50,14 @@ class EditCategory extends Component {
             });
         } 
     
-      handleOpen = () => {
+      handleOpen(){
         this.setState({open: true});
-        console.log(this.props.id)
       };
     
-      handleClose = () => {
+      handleClose(){
         this.setState({open: false});
       };
-      handleChange=(e)=>{
+      handleChange(e){
         this.setState({ [e.target.name] : e.target.value });
     }
 

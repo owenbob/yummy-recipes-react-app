@@ -3,11 +3,9 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import axios from 'axios';
-import './styling.css';
 import style from './styling';
 import Notifications, {notify} from 'react-notify-toast';
-
-
+import baseUrl from './config';
 
 
 
@@ -20,11 +18,12 @@ class Register extends Component {
           password:''
         };
         this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
       } 
 
-    handleClick = (e) =>{
+    handleClick(e){
         e.preventDefault();
-        const registerUrl='http://127.0.0.1:5000/register';
+        const registerUrl= baseUrl+'register';
         axios.post(registerUrl, {
             username: this.state.username,
             email: this.state.email,
@@ -43,7 +42,7 @@ class Register extends Component {
             });
         }
 
-    handleChange=(e)=>{
+    handleChange(e){
         this.setState({ [e.target.name] : e.target.value });
     }
   render() {

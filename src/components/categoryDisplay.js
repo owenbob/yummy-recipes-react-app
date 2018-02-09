@@ -23,6 +23,9 @@ class CategoryDisplay extends Component {
             category:[],
             categoryId:categoryId,
         }
+        this.handleChangeCat = this.handleChangeCat.bind(this);
+        this.handleChangeRec = this.handleChangeRec.bind(this);
+        this.handleLogOut = this.handleLogOut.bind(this)
     }
 
     getCategory(){
@@ -43,14 +46,14 @@ class CategoryDisplay extends Component {
         console.log('I got here')
         this.getCategory();
     }
-    handleChangeCat=(e) =>{
+    handleChangeCat(e){
         this.props.history.push('/yummyrecipes/dashboard')
         
     }
-    handleChangeRec=(e) =>{
+    handleChangeRec(e){
         this.props.history.push('/yummyrecipes/recipes')
         }
-    handleLogOut =(e) =>{
+    handleLogOut(e){
         localStorage.removeItem("token");
         this.props.history.push('/login')
     }

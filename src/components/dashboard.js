@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CreateCategory from './createCategory';
 import ViewCategory from './viewCategory';
 
-import './styling.css';
+// import './styling.css';
 import axios from 'axios';
 
 import Menu from 'material-ui/Menu';
@@ -18,8 +18,10 @@ import  {notify} from 'react-notify-toast';
 
 class Dashboard extends Component {
     constructor (props){
-        super(props)
-        
+        super(props);
+        this.handleLogOut = this.handleLogOut.bind(this);
+        this.handleChangeCat = this.handleChangeCat.bind(this);
+        this.handleChangeRec = this.handleChangeRec.bind(this);     
     }
 
 
@@ -28,18 +30,19 @@ class Dashboard extends Component {
             this.props.history.push('/login')
         }
     }
-    handleChangeCat=(e) =>{
+    handleChangeCat(e){
         this.props.history.push('/yummyrecipes/dashboard')
         
     }
-    handleChangeRec=(e) =>{
+    handleChangeRec(e){
         this.props.history.push('/yummyrecipes/recipes')
         }
 
-    handleLogOut =(e) =>{
+    handleLogOut(e){
         localStorage.removeItem("token");
-        this.props.history.push('/login')
         notify.show('Successful Logged out', 'success');
+        this.props.history.push('/login')
+        
     }
    
     
@@ -82,7 +85,6 @@ class Dashboard extends Component {
           <div>
                 <CreateCategory />
           </div>
-            <br/>
                 <Divider/>
             <div>
                 <ViewCategory/>

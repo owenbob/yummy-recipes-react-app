@@ -4,6 +4,7 @@ import DeleteCategory from './deleteCategory';
 import Categories from './Category';
 import axios from 'axios';
 import TextField from 'material-ui/TextField';
+import Card from 'material-ui/Card';
 import {
     Table,
     TableBody,
@@ -12,6 +13,7 @@ import {
   } from 'material-ui/Table';
 
 import {notify} from 'react-notify-toast';
+import baseUrl from './config';
 
 
 
@@ -22,10 +24,11 @@ import {notify} from 'react-notify-toast';
           categories:[],
           
         }
+        this.handleSearchCat = this.handleSearchCat.bind(this);
       }
     
     getCategories(){
-        let viewCategoryUrl= 'http://127.0.0.1:5000/categories'
+        let viewCategoryUrl= baseUrl+'categories'
 
         axios.get(viewCategoryUrl,
             {headers: {'x-access-token': localStorage.getItem('token')}} 
@@ -42,7 +45,7 @@ import {notify} from 'react-notify-toast';
     componentWillMount(){
         this.getCategories();   
       }
-    handleSearchCat=(e)=>{
+    handleSearchCat(e){
         if (e.target.value) {
             let SearchCatUrl = 'http://127.0.0.1:5000/categories?q=' + e.target.value
 
@@ -62,13 +65,14 @@ import {notify} from 'react-notify-toast';
     }
 
     render() {
+        const {categories} = this.state
         
-        let renderCategories = this.state.categories.map(category => {
+        let renderCategories = categories.map(category => {
             return (
             <Categories id={category.id} {...category}/>
         )
     })
-        return( 
+        return( <Card>
                 <Table>
                     
                     <TableBody>
@@ -90,6 +94,7 @@ import {notify} from 'react-notify-toast';
                             {renderCategories}
                     </TableBody>
                 </Table>
+                </Card>
         )
     }
 }

@@ -3,9 +3,10 @@ import axios from 'axios';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
-import './styling.css';
+// import './styling.css';
 import style from './styling';
 import {notify} from 'react-notify-toast';
+import baseUrl from'./config';
 
 
 class Login extends Component { 
@@ -15,12 +16,14 @@ class Login extends Component {
       username:'',
       password:''
     };
+    this.handleLoginChange = this.handleLoginChange.bind(this);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
   } 
 
-  handleLoginClick = (e) =>{
+  handleLoginClick(e){
     e.preventDefault();
-    const LoginUrl='http://127.0.0.1:5000/login';
-    axios.post(LoginUrl, {
+    const LoginUrl='login';
+    axios.post(baseUrl+LoginUrl, {
         username: this.state.username,
         password: this.state.password
     })
@@ -35,7 +38,7 @@ class Login extends Component {
          
         });
     }
-  handleLoginChange=(e) => {
+  handleLoginChange(e) {
     this.setState({ [e.target.name] : e.target.value });
   }
   render() { 

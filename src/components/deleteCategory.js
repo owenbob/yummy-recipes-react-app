@@ -7,7 +7,6 @@ import {notify} from 'react-notify-toast';
 
 
 import axios from 'axios';
-import './styling.css';
 
 
 
@@ -18,9 +17,12 @@ class DeleteCategory  extends Component {
         this.state={
           open: false,
         };
+        this.handleClick= this.handleClick.bind(this);
+        this.handleOpen= this.handleOpen.bind(this);
+        this.handleClose= this.handleClose.bind(this);
       } 
 
-      handleClick = (e) =>{
+      handleClick(e){
         e.preventDefault();
         const DeleteCategoryUrl='http://127.0.0.1:5000/delete_category/'+this.props.id;
         axios.delete(DeleteCategoryUrl,
@@ -38,11 +40,11 @@ class DeleteCategory  extends Component {
             });
         } 
     
-      handleOpen = () => {
+      handleOpen(){
         this.setState({open: true});
       };
     
-      handleClose = () => {
+      handleClose(){
         this.setState({open: false});
       };
 

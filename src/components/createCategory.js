@@ -5,10 +5,11 @@ import TextField from 'material-ui/TextField';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import  {notify} from 'react-notify-toast';
+import baseUrl from'./config';
 
 
 import axios from 'axios';
-import './styling.css';
+
 
 
 
@@ -22,11 +23,15 @@ class CreateCategory extends Component {
           category_title:'',
           category_description:''
         };
+        this.handleClick = this.handleClick.bind(this);
+        this.handleOpen = this.handleOpen.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+        this.handleChange = this.handleChange.bind(this);
       } 
 
-      handleClick = (e) =>{
+      handleClick(e){
         e.preventDefault();
-        const CreateCategoryUrl='http://127.0.0.1:5000/create_category';
+        const CreateCategoryUrl=baseUrl+'create_category';
         axios.post(CreateCategoryUrl,
             {
             category_title: this.state.category_title,
@@ -35,7 +40,7 @@ class CreateCategory extends Component {
         {headers: {'x-access-token': localStorage.getItem('token')}} 
     )
         .then(response => {
-            console.log(response);
+            console.log(response.data);
             if(response.status === 201){
                 notify.show('Category created!','success');
                 window.location.reload()
@@ -45,13 +50,13 @@ class CreateCategory extends Component {
                 notify.show('Category Not created','error');
             });
         } 
-      handleOpen = () => {
+      handleOpen(){
         this.setState({open: true});
       };
-      handleClose = () => {
+      handleClose(){
         this.setState({open: false});
       };
-      handleChange=(e)=>{
+      handleChange(e){
         this.setState({ [e.target.name] : e.target.value });
     }
 

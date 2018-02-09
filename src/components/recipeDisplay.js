@@ -21,6 +21,9 @@ class RecipeDisplay extends Component {
             recipe:[],
             recipeId:recipeId,
         }
+        this.handleChangeCat = this.handleChangeCat.bind(this);
+        this.handleChangeRec = this.handleChangeRec.bind(this);
+        this.handleLogOut = this.handleLogOut.bind(this)
     }
 
     getRecipe(){
@@ -41,14 +44,14 @@ class RecipeDisplay extends Component {
         console.log('I got here')
         this.getRecipe();
     }
-    handleChangeCat=(e) =>{
+    handleChangeCat(e){
         this.props.history.push('/yummyrecipes/dashboard')
         
     }
-    handleChangeRec=(e) =>{
+    handleChangeRec(e){
         this.props.history.push('/yummyrecipes/recipes')
         }
-    handleLogOut =(e) =>{
+    handleLogOut(e){
         localStorage.removeItem("token");
         this.props.history.push('/login')
     }
