@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
+import Card from 'material-ui/Card';
 import axios from 'axios';
 import style from './styling';
 import Notifications, {notify} from 'react-notify-toast';
@@ -49,7 +49,7 @@ class Register extends Component {
     return (    
     <div className="Register" >
         <div className ="center">
-            <Paper style={style} zDepth={3} >
+            <Card >
                 <div className ="inner">
                     <h1 className = "text" >Welcome To Yummy Recipes</h1>
                     <Notifications />
@@ -83,7 +83,7 @@ class Register extends Component {
                     <h2 className ="text"> Already registered?</h2>
                     <RaisedButton label="Login" href="/login" primary={true} style={style}/>
                 </div>
-            </Paper>    
+            </Card>    
         </div>
     </div>
     );

@@ -7,12 +7,10 @@ exports[`Login matches  snapshot 1`] = `
   <div
     className="center"
   >
-    <Paper
-      circle={false}
-      rounded={true}
-      style={Object {}}
-      transitionEnabled={true}
-      zDepth={3}
+    <Card
+      expandable={false}
+      expanded={null}
+      initiallyExpanded={false}
     >
       <div
         className="inner"
@@ -82,7 +80,7 @@ exports[`Login matches  snapshot 1`] = `
           />
         </form>
       </div>
-    </Paper>
+    </Card>
   </div>
 </div>
 `;
