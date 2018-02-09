@@ -1,5 +1,5 @@
 
-
+[![Build Status](https://travis-ci.org/owenbob/yummy-recipes-react-app.svg?branch=master)](https://travis-ci.org/owenbob/yummy-recipes-react-app)
 # yummy-recipes-react-app
 
 ##  Its a create react app that consumes Yummy-recipes-API(https://github.com/owenbob/Yummy-recipes-API) to:
