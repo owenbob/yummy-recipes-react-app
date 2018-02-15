@@ -11,6 +11,7 @@ import Reply from 'material-ui/svg-icons/content/reply';
 import {Card,    
         CardTitle, 
         CardText} from 'material-ui/Card';
+import baseUrl from './config';
 
 
 
@@ -29,7 +30,7 @@ class CategoryDisplay extends Component {
     }
 
     getCategory(){
-        let viewACategoryUrl= 'http://127.0.0.1:5000/category/'+this.state.categoryId
+        let viewACategoryUrl= baseUrl+'category/'+this.state.categoryId
 
         axios.get(viewACategoryUrl,
             {headers: {'x-access-token': localStorage.getItem('token')}} 

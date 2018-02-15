@@ -12,6 +12,8 @@ import {Card,
     CardTitle, 
     CardText} from 'material-ui/Card';
 
+import baseUrl from './config';
+
 class RecipeDisplay extends Component {
     constructor(props){
         super(props)
@@ -27,7 +29,7 @@ class RecipeDisplay extends Component {
     }
 
     getRecipe(){
-        let viewARecipeUrl= 'http://127.0.0.1:5000/recipe/'+this.state.recipeId
+        let viewARecipeUrl= baseUrl+'recipe/'+this.state.recipeId
 
         axios.get(viewARecipeUrl,
             {headers: {'x-access-token': localStorage.getItem('token')}} 

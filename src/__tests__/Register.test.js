@@ -22,7 +22,7 @@ const setUp = () => {
     return shallow(<Register {...props} />);
 };
 
-describe('Header', () => {
+describe('Register', () => {
     it('matches  snapshot', () => {
             const register = setUp;
            expect(shallowToJson(register)).toMatchSnapshot();

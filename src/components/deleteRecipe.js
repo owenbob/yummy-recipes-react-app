@@ -6,7 +6,8 @@ import Delete from 'material-ui/svg-icons/action/delete';
 
 
 import axios from 'axios';
-
+import baseUrl from './config';
+import  {notify} from 'react-notify-toast';
 
 
 
@@ -23,40 +24,60 @@ class DeleteCategory  extends Component {
         this.handleClose =this.handleClose.bind(this);
         
 
-      } 
+      }
+      getRecipes(){
+        let viewRecipesUrl= baseUrl+'recipes?limit='+this.state.limit+'&page='+this.state.page
 
+        axios.get(viewRecipesUrl,
+            {headers: {'x-access-token': localStorage.getItem('token')}} 
+        ).then(response => {
+          this.setState({recipes:response.data.recipes})
+        })
+        .catch(error => {
+          console.log(error.response)
+        })
+
+    } 
+      
+      //handleClick to make an API call and delete the recipe with a certain id
       handleClick(e){
         e.preventDefault();
-        const DeleteCategoryUrl='http://127.0.0.1:5000/delete_recipe/'+this.props.id;
+        const DeleteCategoryUrl=baseUrl+'delete_recipe/'+this.props.id;
         axios.delete(DeleteCategoryUrl,
         {headers: {'x-access-token': localStorage.getItem('token')}} 
-    )
+    )// If API call is successfull then notify user the recipe is deleted
         .then(response => {
             console.log(response);
             if(response.status === 200){
-                window.location.reload()
-                this.props.history.push('/yummyrecipes/dashboard');
+                notify.show('Recipe deleted','success');
+                this.getRecipes()
+                this.setState({open: false});
+                
             }
             }).catch(error=> {
                 console.log(error)
             });
         } 
-    
+    //handleOpen method to cater opening of modal by setting state to open
       handleOpen(){
         this.setState({open: true});
       };
-    
+    //handleOpen method to cater closing of modal by setting state to false
       handleClose(){
         this.setState({open: false});
       };
 
   render() {
     const actions = [
+         //Material Ui component for button Modal
+        //Cancel button  to close modal
         <FlatButton
           label="No"
           primary={true}
           onClick={this.handleClose}
         />,
+        //Material Ui component for button Modal
+        //Submit button  to submit form
         <FlatButton
           label="Yes"
           primary={true}
@@ -68,6 +89,7 @@ class DeleteCategory  extends Component {
     return ( 
         <div>
         <div className = "addbutton">
+        {/* Form to to prompt user and then delete on click    */}
             <FloatingActionButton onClick={this.handleOpen}>
                 <Delete />
             </FloatingActionButton>

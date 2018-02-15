@@ -15,7 +15,19 @@
   width: 80%;
   padding: 10px;
 }
+.center1 {
+  margin: auto;
+  width: 15%;
+  padding: 3px;
+  
+}
 
+.pad{
+  margin-left: 30px;
+}
+.pad1{
+  margin-left: 53px;
+}
 .inner {
   margin: auto;
   margin-left:30%;

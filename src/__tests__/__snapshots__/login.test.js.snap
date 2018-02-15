@@ -20,36 +20,49 @@ exports[`Login matches  snapshot 1`] = `
         >
           Welcome To Yummy Recipes
         </h1>
-        <form
+        <ValidatorForm
+          debounceTime={0}
+          onError={[Function]}
           onSubmit={[Function]}
         >
-          <TextField
-            disabled={false}
-            floatingLabelFixed={false}
+          <TextValidator
+            errorMessages={
+              Array [
+                "this field is required",
+                "Username cannot only be numbers",
+              ]
+            }
             floatingLabelText="Username"
-            fullWidth={false}
             hintText=" Enter your Username"
-            multiLine={false}
             name="username"
             onChange={[Function]}
-            rows={1}
-            type="text"
-            underlineShow={true}
+            validatorListener={[Function]}
+            validators={
+              Array [
+                "required",
+                "isString",
+              ]
+            }
             value=""
           />
           <br />
-          <TextField
-            disabled={false}
-            floatingLabelFixed={false}
+          <TextValidator
+            errorMessages={
+              Array [
+                "this field is required",
+              ]
+            }
             floatingLabelText="Password"
-            fullWidth={false}
             hintText=" Enter your Password"
-            multiLine={false}
             name="password"
             onChange={[Function]}
-            rows={1}
             type="password"
-            underlineShow={true}
+            validatorListener={[Function]}
+            validators={
+              Array [
+                "required",
+              ]
+            }
             value=""
           />
           <br />
@@ -78,7 +91,7 @@ exports[`Login matches  snapshot 1`] = `
             secondary={false}
             style={Object {}}
           />
-        </form>
+        </ValidatorForm>
       </div>
     </Card>
   </div>

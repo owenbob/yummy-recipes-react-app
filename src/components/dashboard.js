@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import CreateCategory from './createCategory';
 import ViewCategory from './viewCategory';
-
-// import './styling.css';
 import axios from 'axios';
 
 import Menu from 'material-ui/Menu';
@@ -24,20 +22,27 @@ class Dashboard extends Component {
         this.handleChangeRec = this.handleChangeRec.bind(this);     
     }
 
-
+  // On mounting check if there is a token in localstorage if not then redirect to login 
     componentDidMount(){
         if(!localStorage.getItem('token')){
             this.props.history.push('/login')
         }
     }
+
+    //handleChangeCat to redirect to /yummyrecipes/dashboard route on click
+    //This acts as a menu item
     handleChangeCat(e){
         this.props.history.push('/yummyrecipes/dashboard')
         
     }
+    //handleChangeRec to redirect to /yummyrecipes/recipes route on click
+    //This acts as a menu item
     handleChangeRec(e){
         this.props.history.push('/yummyrecipes/recipes')
         }
-
+    //handleLogOut removes the token from storage and redirects user to /login route
+    // This succesfully logs out the user and notifies him so
+    //this acts menu item
     handleLogOut(e){
         localStorage.removeItem("token");
         notify.show('Successful Logged out', 'success');
@@ -45,7 +50,7 @@ class Dashboard extends Component {
         
     }
    
-    
+    //Render method that render items on UI
     render() {
         return (
         <div>
@@ -56,12 +61,16 @@ class Dashboard extends Component {
             
         <div id = "container">
         <div className = "left">
+        {/* Menuitems for category,recipe and logout */}
+
         <Menu >
+            {/* Category menuitem */}
             <MenuItem   className = "menu_style"
                         onClick = {this.handleChangeCat}  
                         primaryText="Category"  
                         leftIcon={<Reorder />} 
             />
+            {/* Recipes menuitem */}
             <MenuItem   className = "menu_style"
                         onClick = {this.handleChangeRec} 
                         primaryText="Recipe" 
@@ -69,6 +78,7 @@ class Dashboard extends Component {
             />
             <Divider    className = "menu_style" 
             />
+            {/* Logout menuitem */}
             <MenuItem   className = "menu_style" 
                         onClick = {this.handleLogOut} 
                         primaryText="Logout" 
@@ -83,10 +93,12 @@ class Dashboard extends Component {
         <Tabs>
         <Tab label="Category">
           <div>
+              {/* Calling createCategory component */}
                 <CreateCategory />
           </div>
                 <Divider/>
             <div>
+                {/* Calling Viewcategory component */}
                 <ViewCategory/>
             </div>
         </Tab>
