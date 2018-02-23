@@ -1,6 +1,7 @@
 
 [![Build Status](https://travis-ci.org/owenbob/yummy-recipes-react-app.svg?branch=master)](https://travis-ci.org/owenbob/yummy-recipes-react-app)
 [![Coverage Status](https://coveralls.io/repos/github/owenbob/yummy-recipes-react-app/badge.svg)](https://coveralls.io/github/owenbob/yummy-recipes-react-app)
+[![CircleCI](https://circleci.com/gh/owenbob/yummy-recipes-react-app.svg?style=svg)](https://circleci.com/gh/owenbob/yummy-recipes-react-app)
 # yummy-recipes-react-app
 
 ###  Its a create react app that consumes Yummy-recipes-API(https://github.com/owenbob/Yummy-recipes-API) to:
