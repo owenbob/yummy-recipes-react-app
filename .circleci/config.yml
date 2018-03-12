@@ -35,9 +35,8 @@ jobs:
         
       # run tests!
       - run: npm test || exit 0
-
-      - deployment:
-          production:
-            branch: master
-            heroku:
-              appname: yummy-recipes-react-appln
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: yummy-recipes-react-appln
