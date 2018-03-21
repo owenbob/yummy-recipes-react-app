@@ -23,7 +23,7 @@
     "utils": "^0.3.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3000 react-scripts start",
     "build": "react-scripts build",
     "test": "jest --env=jsdom --coverage",
     "eject": "react-scripts eject"
